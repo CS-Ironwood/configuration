@@ -44,7 +44,6 @@ urllib3==1.24.3           # via requests
 
 
 # Needed for the mongo_* modules (playbooks/library/mongo_*)
-pymongo==3.1
 
 wsgiref==0.1.2
 python-simple-hipchat==0.2
