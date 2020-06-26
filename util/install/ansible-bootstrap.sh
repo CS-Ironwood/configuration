@@ -134,7 +134,7 @@ fi
 
 # pip moves to /usr/local/bin when upgraded
 PATH=/usr/local/bin:${PATH}
-pip install setuptools<"${SETUPTOOLS_VERSION}"
+pip install setuptools<="${SETUPTOOLS_VERSION}"
 pip install virtualenv=="${VIRTUAL_ENV_VERSION}"
 
 
