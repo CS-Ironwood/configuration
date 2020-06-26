@@ -22,7 +22,7 @@ if [[ -z "${ANSIBLE_VERSION}" ]]; then
 fi
 
 if [[ -z "${CONFIGURATION_REPO}" ]]; then
-  CONFIGURATION_REPO="https://github.com/edx/configuration.git"
+  CONFIGURATION_REPO="https://github.com/CS-Ironwood/configuration.git"
 fi
 
 if [[ -z "${CONFIGURATION_VERSION}" ]]; then
@@ -134,7 +134,7 @@ fi
 
 # pip moves to /usr/local/bin when upgraded
 PATH=/usr/local/bin:${PATH}
-pip install setuptools=="${SETUPTOOLS_VERSION}"
+pip install setuptools<"${SETUPTOOLS_VERSION}"
 pip install virtualenv=="${VIRTUAL_ENV_VERSION}"
 
 
