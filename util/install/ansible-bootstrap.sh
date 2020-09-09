@@ -42,11 +42,22 @@ fi
 #
 # Bootstrapping constants
 #
-VIRTUAL_ENV_VERSION="15.2.0"
-PIP_VERSION="9.0.3"
-SETUPTOOLS_VERSION="39.0.1"
+#VIRTUAL_ENV_VERSION="15.2.0"
+#PIP_VERSION="9.0.3"
+#SETUPTOOLS_VERSION="39.0.1"
+#VIRTUAL_ENV="/tmp/bootstrap"
+#PYTHON_BIN="${VIRTUAL_ENV}/bin"
+#ANSIBLE_DIR="/tmp/ansible"
+#CONFIGURATION_DIR="/tmp/configuration"
+#EDX_PPA_KEY_SERVER="keyserver.ubuntu.com"
+#EDX_PPA_KEY_ID="B41E5E3969464050"
+
+VIRTUAL_ENV_VERSION="16.7.10"
+PIP_VERSION="20.0.2"
+SETUPTOOLS_VERSION="44.1.0"
 VIRTUAL_ENV="/tmp/bootstrap"
 PYTHON_BIN="${VIRTUAL_ENV}/bin"
+PYTHON_VERSION="3.5"
 ANSIBLE_DIR="/tmp/ansible"
 CONFIGURATION_DIR="/tmp/configuration"
 EDX_PPA_KEY_SERVER="keyserver.ubuntu.com"
@@ -132,13 +143,16 @@ apt-get update -y
 
 apt-get install -y python2.7 python2.7-dev python-pip python-apt python-yaml python-jinja2 build-essential sudo git-core libmysqlclient-dev libffi-dev libssl-dev
 
-
-pip install --upgrade pip=="${PIP_VERSION}"
+apt-get install -y python${PYTHON_VERSION}-dev python3-pip python3-apt
+python${PYTHON_VERSION} -m pip install --upgrade pip=="${PIP_VERSION}"
+#pip install --upgrade pip=="${PIP_VERSION}"
 
 # pip moves to /usr/local/bin when upgraded
 PATH=/usr/local/bin:${PATH}
-pip install setuptools=="${SETUPTOOLS_VERSION}"
-pip install virtualenv=="${VIRTUAL_ENV_VERSION}"
+python${PYTHON_VERSION} -m pip install setuptools=="${SETUPTOOLS_VERSION}"
+python${PYTHON_VERSION} -m pip install virtualenv=="${VIRTUAL_ENV_VERSION}"
+#pip install setuptools=="${SETUPTOOLS_VERSION}"
+#pip install virtualenv=="${VIRTUAL_ENV_VERSION}"
 
 
 if [[ "true" == "${RUN_ANSIBLE}" ]]; then
